@@ -5,7 +5,10 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 
+from content_api.models import Item
+from content_api.serializers import ItemSerializer
 
-class TestViewSet(viewsets.ViewSet):
-    def list(self, request):
-        return Response('Success!')
+
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
